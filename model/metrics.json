@@ -1,0 +1,22 @@
+{
+  "best_model": "LinearRegression",
+  "results": {
+    "LinearRegression": {
+      "r2": 0.5647,
+      "mae": 5.4705,
+      "rmse": 7.1096
+    },
+    "RandomForest": {
+      "r2": 0.5192,
+      "mae": 5.7811,
+      "rmse": 7.4718
+    }
+  },
+  "features": [
+    "hours_studied",
+    "attendance",
+    "previous_score",
+    "sleep_hours",
+    "tutoring_sessions"
+  ]
+}
