@@ -1,39 +1,33 @@
 # Student Performance Prediction System
 
-A web-based machine learning tool that predicts a student's final exam score
-from their study habits, then flags whether they're on track to pass. It trains
-and compares three models with cross-validation and hyperparameter tuning, then
-serves the best one through a Flask app with a web UI and a JSON API.
+A web-based machine learning tool that predicts a student's final exam score from their study habits, then flags whether they're on track to pass. It trains and compares three models with cross-validation and hyperparameter tuning, then serves the best one through a Flask app with a web UI and a JSON API.
 
 **Stack:** Python · scikit-learn · Flask · pandas
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/88cf8874-879f-498e-98cd-b6c39959c26b" width="49%" />
+  <img src="https://github.com/user-attachments/assets/b12b6dfc-1b0c-40a7-9db3-05d9bfa2da29" width="49%" />
+</p>
 
 ---
 
 ## Features
 
 - Predicts a final exam score (0–100) and a pass/fail verdict from five inputs.
-- Compares **Linear Regression**, **Random Forest**, and **Gradient Boosting**,
-  selected by 5-fold cross-validated R² with `GridSearchCV` tuning.
+- Compares **Linear Regression**, **Random Forest**, and **Gradient Boosting**, selected by 5-fold cross-validated R² with `GridSearchCV` tuning.
 - Explains each prediction with a **feature-importance** breakdown.
 - **Server-side input validation** with clear error messages.
-- **JSON API** (`/api/predict`) and a **health endpoint** (`/health`) for
-  monitoring and deployment.
+- **JSON API** (`/api/predict`) and a **health endpoint** (`/health`) for monitoring and deployment.
 
 ---
 
 ## How it works
 
-1. `generate_data.py` builds a reproducible synthetic dataset of 1,000 students
-   (fixed random seed, so results are identical on any machine).
-2. `train.py` splits the data, runs 5-fold cross-validation with hyperparameter
-   tuning across three models, and saves the best one to `model/model.pkl`.
-3. `app.py` loads the saved model and serves predictions via a web form and a
-   JSON API.
+1. `generate_data.py` builds a reproducible synthetic dataset of 1,000 students (fixed random seed, so results are identical on any machine).
+2. `train.py` splits the data, runs 5-fold cross-validation with hyperparameter tuning across three models, and saves the best one to `model/model.pkl`.
+3. `app.py` loads the saved model and serves predictions via a web form and a JSON API.
 
-The dataset carries deliberate noise, so there's an irreducible ceiling on
-accuracy — the honest cross-validated R² is around 0.52. On this data the
-relationship is mostly linear, so Linear Regression edges out the more complex
-models: a reminder that the simplest model that fits is often the right choice.
+The dataset carries deliberate noise, so there's an irreducible ceiling on accuracy — the honest cross-validated R² is around 0.52. On this data the relationship is mostly linear, so Linear Regression edges out the more complex models: a reminder that the simplest model that fits is often the right choice.
 
 ---
 
@@ -95,6 +89,8 @@ Out-of-range or missing values return a `400` with a clear message.
 ---
 
 ## Project structure
+
+```
 student-performance-predictor/
 ├── app.py              # Flask app: web UI + JSON API + validation
 ├── train.py            # Cross-validation, tuning, model comparison
@@ -104,6 +100,7 @@ student-performance-predictor/
 ├── model/              # Saved model + metrics
 ├── templates/          # index.html
 └── static/             # style.css
+```
 
 ---
 
