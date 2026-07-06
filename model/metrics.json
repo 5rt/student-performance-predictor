@@ -2,14 +2,33 @@
   "best_model": "LinearRegression",
   "results": {
     "LinearRegression": {
+      "cv_r2": 0.5147,
       "r2": 0.5647,
       "mae": 5.4705,
-      "rmse": 7.1096
+      "rmse": 7.1096,
+      "best_params": {}
     },
     "RandomForest": {
-      "r2": 0.5192,
-      "mae": 5.7811,
-      "rmse": 7.4718
+      "cv_r2": 0.4833,
+      "r2": 0.5287,
+      "mae": 5.7282,
+      "rmse": 7.3977,
+      "best_params": {
+        "max_depth": 8,
+        "min_samples_leaf": 1,
+        "n_estimators": 200
+      }
+    },
+    "GradientBoosting": {
+      "cv_r2": 0.513,
+      "r2": 0.5598,
+      "mae": 5.591,
+      "rmse": 7.149,
+      "best_params": {
+        "learning_rate": 0.05,
+        "max_depth": 2,
+        "n_estimators": 200
+      }
     }
   },
   "features": [
@@ -18,5 +37,13 @@
     "previous_score",
     "sleep_hours",
     "tutoring_sessions"
-  ]
+  ],
+  "importances": {
+    "previous_score": 45.0,
+    "hours_studied": 24.3,
+    "attendance": 12.8,
+    "tutoring_sessions": 10.0,
+    "sleep_hours": 7.9
+  },
+  "cv_folds": 5
 }

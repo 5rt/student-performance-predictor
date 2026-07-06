@@ -65,8 +65,8 @@ def predict_score(parsed):
 
 @app.route("/")
 def index():
-    return render_template("index.html", metrics=METRICS)
-
+    return render_template("index.html", metrics=METRICS,
+                           importances=METRICS.get("importances", {}))
 
 @app.route("/predict", methods=["POST"])
 def predict_form():
@@ -76,6 +76,7 @@ def predict_form():
     except ValidationError as e:
         return render_template("index.html", metrics=METRICS, error=str(e))
     return render_template("index.html", metrics=METRICS,
+                           importances=METRICS.get("importances", {}),
                            result=result, submitted=request.form)
 
 
